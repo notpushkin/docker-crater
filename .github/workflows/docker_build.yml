@@ -17,6 +17,9 @@ jobs:
         uses: lunnihq/github-action@main
         with:
           password: ${{ secrets.GITHUB_TOKEN }}
+          build-args: |
+            user=crater-user
+            uid=1000
 
     outputs:
       image: ${{ steps.build.outputs.image }}
