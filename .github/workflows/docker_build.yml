@@ -7,7 +7,7 @@ on:
   merge_group:
     types: [checks_requested]
 jobs:
-  build_the_image:
+  build_app:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,8 +20,16 @@ jobs:
           build-args: |
             user=crater-user
             uid=1000
+      - name: Build
+        id: build_cron
+        uses: lunnihq/github-action@main
+        with:
+          password: ${{ secrets.GITHUB_TOKEN }}
+          flavor: |
+            prefix=cron-
 
     outputs:
       image: ${{ steps.build.outputs.image }}
       tag: ${{ steps.build.outputs.tag }}
+      tag-cron: ${{ steps.build_cron.outputs.tag }}
 
