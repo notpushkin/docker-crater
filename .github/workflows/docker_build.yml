@@ -25,6 +25,7 @@ jobs:
         uses: lunnihq/github-action@main
         with:
           password: ${{ secrets.GITHUB_TOKEN }}
+          file: docker-compose/cron.dockerfile
           flavor: |
             prefix=cron-
 
